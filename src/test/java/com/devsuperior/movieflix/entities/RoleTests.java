@@ -8,7 +8,7 @@ public class RoleTests {
 	@Test
 	public void roleShouldHaveCorrectStructure() {
 		
-		User entity = new User();
+		Role entity = new Role();
 		entity.setId(1L);
 		entity.setAuthority("ROLE_MEMBER");
 	
