@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -35,10 +36,7 @@ public class User implements Serializable {
 		inverseJoinColumns = @JoinColumn(name = "role_id"))	
 	private Set<Role> roles = new HashSet<>();
 	
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "tb_reviews",
-		joinColumns = @JoinColumn(name = "user_id"),
-		inverseJoinColumns = @JoinColumn(name = "movie_id"))
+	@OneToMany(mappedBy = "user")
 	private List<Review> reviews = new ArrayList<>();
 	
 	public User() {

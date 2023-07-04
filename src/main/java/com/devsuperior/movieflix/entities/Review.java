@@ -8,7 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,10 +24,12 @@ public class Review implements Serializable {
 	@Column(columnDefinition = "TEXT")
 	private String text;
 	
-	@OneToMany(mappedBy = "reviews")
+	@ManyToOne
+	@JoinColumn(name = "movie_id")
 	private Movie movie;
 	
-	@OneToMany(mappedBy = "reviews")
+	@ManyToOne
+	@JoinColumn(name = "user_id")
 	private User user;
 
 	public Review() {
